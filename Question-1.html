@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>PH Twitter Fake News Analysis</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <style>
+            pre code {
+                background-color: #eee;
+                border: 1px solid #999;
+                display: block;
+                padding: 20px;
+                font-family: Consolas;
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+    
+        <!-- Nav -->
+            <nav id="nav">
+                <ul class="container">
+                    <li><a href="#top">Top</a></li>
+                    <li><a href="#problem-formulation">Problem Formulation</a></li>
+                    <li><a href="#data">Data</a></li>
+                    <li><a href="#methods">Methods</a></li>
+                    <li><a href="#results">Results</a></li>
+                    <li><a href="#team">Team</a></li>
+                </ul>
+            </nav>
+    
+        <!-- Home -->
+            <article id="top" class="wrapper style1">
+                <div class="container">
+                    <div class="row">
+                            <header>
+                                <h3>Question 1: Are there significantly more anecdotal than factual Tweets?</h3>
+                            </header>
+
+
+
+                            <p>
+                                Based on our Project Proposal, these will be our Null and Alternative Hypothesis,
+                                Null Hypothesis: Only an insignificant number of tweets about the benefits of Ivermectin in curing COVID-19 are based on anecdotal evidence.
+                                Alt  Hypothesis: A large percentage of tweets about the benefits of Ivermectin in curing COVID-19 were only based on anecdotal evidence.
+
+                                To solve for this we had to use a Binomial Test to determine if the proportion of a binary variable is equal to a a previously claimed value which is that an insignificant number of anecdotal tweets make up the tweets collected. So we assume that the estimate chance of success is 50% which means that a tweet is either Anecdotal or Factual For this we will let the significance level of alpha = 0.05, while we use the formula for a binomial test
+                            </p>
+
+                            <img src = "images/q1-binomial.png" >
+                            <p>
+                                where k is the count of anecdotal tweets while n is the total amount of tweets.
+                            </p>
+                            <pre>
+                                <code>
+from scipy.stats import binom_test
+
+anecdotal_number = df["Theme"].value_counts()[0]
+not_anecdotal_number = df["Theme"].value_counts()[1] + df["Theme"].value_counts()[2]
+totalnum = anecdotal_number + not_anecdotal_number
+
+p_value = binom_test(anecdotal_number,totalnum, 0.5)
+
+p_value
+                                </code>
+                            </pre>
+                            <p>
+                                In the code block above, after doing caterorical encoding to convert the "Anecdotal" to 0 while the "Factual" and "None" are converted to 1 and 2 respectively,
+
+                                After running the code, we ge a p-value of 
+                            </p>
+
+                            
+
+                            <p>
+                                  Since we used an alpha value of 0.05 while our p-value is 0.001331825114199613, <strong>We reject the Null Hypothesis and we can conclude that a large percentage of tweets about the benefits of Ivermectin in curing COVID-19 were only based on anecdotal evidence. </strong>
+                            </p>
+
+                    </div>
+                </div>
+            </article>
+</html>
