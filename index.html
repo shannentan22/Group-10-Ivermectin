@@ -97,23 +97,85 @@
 			<article id="data" class="wrapper style3">
 				<div class="container">
 					<header>
-						<h2>Data Preprocessing</h2>
-						<h3>Handling missing values/ensuring no missue values</h3>
-						<p>Insert text here</p>
-						<h3>Handling outliers</h3>
-						<p>Insert text here</p>
-						<h3>Ensuring formatting consistency</h3>
-						<p>Insert text here</p>
-						<h3>Normalization/standardization</h3>
-						<p>Insert text here</p>
-						<h3>Categorical Data Encoding</h3>
-						<p>Insert text here</p>
-
-						<h2>Natural Language Processing</h2>
-						<p>Proin odio consequat  sapien vestibulum consequat lorem dolore feugiat.</p>
-
 						<h2>Data Exploration</h2>
 						<p>Proin odio consequat  sapien vestibulum consequat lorem dolore feugiat.</p>
+						
+						<script src="https://gist.github.com/shannentan22/40660be3b8f91d2baa3faefb1f2a0e13.js"></script>
+						
+						<h2>Importing Data</h2>
+						<pre>
+							<code>
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/shannentan22/Group-10-Ivermectin/main/Dataset.csv"
+df = pd.read_csv(url)
+							</code>
+						</pre>
+						<h2>Data Preprocessing</h2>
+						<h3>Handling missing values/ensuring no missing values</h3>
+						<p>
+						</p>
+						
+						<p>
+							 
+						</p>
+						<pre>
+							<code>
+# Remove red columns, put N/A in yellow a
+df = df.drop(columns=['Group', 'Collector', 'Category', 'Topic', 'Account bio', 'Location', 'Reasoning', 'Remarks', 'Reviewer', 'Review', 'Screenshot', 'Quote Tweets', 'Views', 'Rating'])
+df.head(5).style
+							</code>
+						</pre>
+						<h3>Handling outliers</h3>
+						<p>So to handle outliers, our group used dropna method for the from the Pandas library. This is just to ensure that if some tweets under the "Theme" column were not "Anecdotal","Factual","None". They were dropped from the data </p>
+						<pre>
+							<code>
+df.dropna(subset=['Theme'])
+df.head(20)
+							</code>
+						</pre>
+						<h3>Ensuring formatting consistency</h3>
+						<p>So to ensure formatting consistency, we used str.replace on the values under the Tweet Translated Column. We used regex expressions to replace parts of the tweet that start with "{Alt". This is because it can affect our data when we do NLP. It is important to note that we also removed symbols from the Translated Tweets such as question marks and exclamation signs since this might affect Tokenization when we do NLP. </p>
+						<pre>
+							<code>
+df['Tweet Translated'] = df['Tweet Translated'].str.replace(r'\{Alt.*?\}', '', regex=True)
+df['Tweet Translated'] = df['Tweet Translated'].str.replace(r'\n', '', regex=True)
+df['Tweet Translated'] = df['Tweet Translated'].str.replace(r'.', '', regex=True)
+df['Tweet Translated'] = df['Tweet Translated'].str.replace(r',', '', regex=True)
+df['Tweet Translated'] = df['Tweet Translated'].str.replace(r'?', '', regex=True)
+df['Tweet Translated'] = df['Tweet Translated'].str.replace(r'!', '', regex=True)
+df['Tweet Translated'] = df['Tweet Translated'].str.replace(r'#', '', regex=True)
+df['Tweet Translated'] = df['Tweet Translated'].str.replace(r'@', '', regex=True)
+df['Tweet Translated'] = df['Tweet Translated'].str.replace(r'(', '', regex=True)
+df['Tweet Translated'] = df['Tweet Translated'].str.replace(r')', '', regex=True)
+pd.set_option('display.max_colwidth', None)
+df.head(20)
+							</code>
+						</pre>
+						<h3>Normalization/standardization</h3>
+						<p>For this part, we didn't do Normalization or standardization. This is because our data is mainly Nominal hence no need to do Normalization or standardization to it.</p>
+						<h3>Categorical Data Encoding</h3>
+						<p>For this part, since our data is also Categorical. We encoded "Anecdotal", "Factual", "None" as 0, 1, and 2 respectively. Note that since we dropped data that don't fit into those categories. The"Theme" column of the dataframe after Categorical Data Encoding will only have values from 0 - 2</p>
+						<pre>
+							<code>
+# Convert Anecdotal to 1, Factual to 0, None to 2
+cleanup_nums = {"Theme": {"Anecdotal": 0, "Factual": 1, "None": 2}}
+df = df.replace(cleanup_nums)
+df.head(5)
+							</code>
+						</pre>
+						<h2>Natural Language Processing</h2>
+						<p>Proin odio consequat  sapien vestibulum consequat lorem dolore feugiat.</p>
+						<h2>Cleaning</h2>
+						<p>Proin odio consequat  sapien vestibulum consequat lorem dolore feugiat.</p>
+						<h2>Tokenization, lower casing + Stop words removal</h2>
+						<p>Proin odio consequat  sapien vestibulum consequat lorem dolore feugiat.</p>
+						<h2>Stemming and lemmatization</h2>
+						<p>Proin odio consequat  sapien vestibulum consequat lorem dolore feugiat.</p>
+						<h2>Merging the Data Frames</h2>
+						<p>Proin odio consequat  sapien vestibulum consequat lorem dolore feugiat.</p>
+
+						
 
 
 
@@ -121,44 +183,44 @@
 					<div class="row">
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
-								<a href="Question-1.html" class="image featured"><img src="images/q1-binomial.png" alt="" /></a>
-								<h3><a href="Question-1.html">Question 1: Are there significantly more anecdotal than factual Tweets?</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
+								<a href="Question-1.html" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+								<h3><a href="Question-1.html">Question 1</a></h3>
+								<p>Are there significantly more anecdotal than factual Tweets?</p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
 								<a href="Question-2.html" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
 								<h3><a href="Question-2.html">Question 2</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
+								<p>What words appear in the most viral Tweets?</p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
 								<a href="Question-3.html" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-								<h3><a href="Question-3.html">Question 3: When did the fake news Tweets occur more frequently?</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
+								<h3><a href="Question-3.html">Question 3</a></h3>
+								<p>When did the fake news Tweets occur more frequently?</p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
 								<a href="Question-4.html" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
 								<h3><a href="Question-4.html">Question 4</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
+								<p>From whom did most of the anecdotal or factual Tweets come from?</p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
 								<a href="Question-5.html" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-								<h3><a href="Question-5.html">Question 5: How does engagement differ between different themes and account types?</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
+								<h3><a href="Question-5.html">Question 5</a></h3>
+								<p>How does engagement differ between different themes and account types?</p>
 							</article>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<article class="box style2">
-								<a href="Question-6.html" class="image featured"><img src="images/q6-1.png" alt="" /></a>
-								<h3><a href="Question-6.html">Question 6: Is there a relationship between the length of the Tweet and the number of likes?</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
+								<a href="Question-6.html" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
+								<h3><a href="Question-6.html">Question 6</a></h3>
+								<p>Is there a relationship between the length of the Tweet and the number of likes?</p>
 							</article>
 						</div>
 					</div>
