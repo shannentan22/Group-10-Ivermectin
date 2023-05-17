@@ -35,24 +35,37 @@
                     <div class="row">
                         <!-- <div class="col-8 col-7-large col-12-medium"> -->
                             <header>
-                                <h3>Question 5: Are there significantly more anecdotal than factual Tweets?</h3>
+                                <h3>Question 5: How does engagement differ between different themes and account types?</h3>
                             </header>
-                            <p>And this is our project, <strong>The Analysis of Tweets Supporting Ivermectin as a Cure for COVID-19</strong>, which aims to examine the main reason behind people's belief in the cure despite it being heavily regarded as false. 
-                                We hope that our findings may contribute to the battle against mis/disinformation.</p>
+                            <p>For this question, we used a heat map to find the correlation between the type of account and the theme of their tweets about Ivermectin.
+                                We first mapped the numerical values of the column "Theme" in back to its text values then counted the number of tweets for each paired category.
+                                We then created a pivot table with the count of data for each combination of type of account and the theme of their tweets.
+                            </p>
                             <pre>
                                 <code>
-from scipy.stats import binom_test
+# heat map
+import pandas as pd
+import seaborn as sns
 
-anecdotal_number = df["Theme"].value_counts()[0]
-not_anecdotal_number = df["Theme"].value_counts()[1] + df["Theme"].value_counts()[2]
-totalnum = anecdotal_number + not_anecdotal_number
+theme_map = {0: "Anecdotal", 1: "Factual", 2: "None"}
+# group the data by 'Account Type' and 'Theme' and get the size of each group
+grouped = df.groupby(['Account type', 'Theme']).size().reset_index(name='count')
 
-p_value = binom_test(anecdotal_number,totalnum, 0.5)
+# map the numeric values in the 'Theme' column to words using the theme_map dictionary
+grouped['Theme'] = grouped['Theme'].map(theme_map)
 
-p_value
+# grouped.head(5)
+
+# create a pivot table with the count of data for each combination of 'Account Type' and 'Theme'
+pivot_table = pd.pivot_table(grouped, values='count', index='Account type', columns='Theme')
+
+# plot the pivot table as a heatmap
+hx = sns.heatmap(pivot_table, cmap='YlGnBu', annot=True, fmt='g')
+hx.set_title('Heatmap')
                                 </code>
                             </pre>
-                            
+                            <p>By plotting the pivot table as a heat map, the results are shown below:</p>
+                            <img src="images/q5-1.png">
                         <!-- </div> -->
                     </div>
                 </div>

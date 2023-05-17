@@ -35,24 +35,22 @@
                     <div class="row">
                         <!-- <div class="col-8 col-7-large col-12-medium"> -->
                             <header>
-                                <h3>Question 1: Are there significantly more anecdotal than factual Tweets?</h3>
+                                <h3>Question 6: Is there a relationship between the length of the Tweet and the number of likes?</h3>
                             </header>
-                            <p>And this is our project, <strong>The Analysis of Tweets Supporting Ivermectin as a Cure for COVID-19</strong>, which aims to examine the main reason behind people's belief in the cure despite it being heavily regarded as false. 
-                                We hope that our findings may contribute to the battle against mis/disinformation.</p>
+                            <p>
+                                To answer this question, we can actually use a Scatterplot to help us visualize the relationship between these two variables. So for this graph, we let the independent variable or the x-axis be the Length of the Tweet while the dependent variable or the y-axis be the Number of Likes in the tweet. 
+                            </p>
                             <pre>
                                 <code>
-from scipy.stats import binom_test
+import seaborn as sns
 
-anecdotal_number = df["Theme"].value_counts()[0]
-not_anecdotal_number = df["Theme"].value_counts()[1] + df["Theme"].value_counts()[2]
-totalnum = anecdotal_number + not_anecdotal_number
-
-p_value = binom_test(anecdotal_number,totalnum, 0.5)
-
-p_value
+sns.scatterplot( x="Tweet Length", y="Likes",data=df);
                                 </code>
                             </pre>
-                            
+                            <img src = "images/q6-1.png">
+                            <p>
+                                So based on the graph above, we can say that there is no relationship between the length of the Tweet and the number of likes. Most of the datapoints are actually just clustered in the lower left of the scatter-plot box.
+                            </p>
                         <!-- </div> -->
                     </div>
                 </div>

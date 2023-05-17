@@ -37,21 +37,31 @@
                             <header>
                                 <h3>Question 2: What words appear in the most viral Tweets?</h3>
                             </header>
-                            <p>We analyzed what words appeared </p>
+                            <p>Before we analyzed what words appeared in the most viral Tweets, we first sorted the data frame by most viral Tweets using the following code:</p>
                             <pre>
                                 <code>
-from scipy.stats import binom_test
-
-anecdotal_number = df["Theme"].value_counts()[0]
-not_anecdotal_number = df["Theme"].value_counts()[1] + df["Theme"].value_counts()[2]
-totalnum = anecdotal_number + not_anecdotal_number
-
-p_value = binom_test(anecdotal_number,totalnum, 0.5)
-
-p_value
+likes_df = df.sort_values('Likes', ascending=False)
+likes_df.head(20)
                                 </code>
                             </pre>
-                            
+                            <p>We then analyzed the most common words across all the Tweets. We used the words from the stemmatized text using the following code:</p>
+                            <pre>
+                                <code>
+common_words = pd.Series([item for sublist in df['Stemmed'] for item in sublist]).value_counts()
+common_words.head(20)
+                                </code>
+                            </pre>
+                            <p>The results of the code are pictured below. As you can see, "ivermectin" was the most common word followed by "covid", and "effect".</p>
+                            <img src="images/q2-2.png" style="width: 200px;">
+                            <p>Then, we finally analyzed the most common words among the top 20 most viral Tweets in our data frame using the followign code:</p>
+                            <pre>
+                                <code>
+common_words = pd.Series([item for sublist in likes_df['Stemmed'].head(20) for item in sublist]).value_counts()
+common_words.head(20)
+                                </code>
+                            </pre>
+                            <p>Below, you can see the results that we got. As you can see, "ivermectin" was still the most common word, followed by "covid". However, "philippin" this time is the 3rd most common word among the top 20 most viral Tweets instead of "effect".</p>
+                            <img src="images/q2-3.png" style="width: 200px;">
                         <!-- </div> -->
                     </div>
                 </div>
