@@ -10,12 +10,25 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			h1, h2, h3, h4, h5, h6, p, strong, li{
+				color: #212019;
+			}
+			#top {
+				background-color: white;
+			}
+			#prob-box {
+				background-color: white;
+				border-radius: 30px;
+				height: 100%;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
 		<!-- Nav -->
 			<nav id="nav">
-				<ul class="container">
+				<ul class="container" style="background-color: #212019;">
 					<li><a href="#top">Top</a></li>
 					<li><a href="#problem-formulation">Problem Formulation</a></li>
 					<li><a href="#data">Data</a></li>
@@ -26,7 +39,7 @@
 			</nav>
 
 		<!-- Home -->
-			<article id="top" class="wrapper style1">
+			<article id="top">
 				<div class="container">
 					<div class="row">
 						<div class="col-4 col-5-large col-12-medium">
@@ -34,46 +47,46 @@
 						</div>
 						<div class="col-8 col-7-large col-12-medium">
 							<header>
-								<h1>Hi. We are <strong>VERITAS</strong>.</h1>
+								<h1>Hi. We are <span style="background-color: #ffd586; padding-top: 5px; padding-bottom: 5px; padding-left: 10px; padding-right: 10px;"><strong>VERITAS</strong></span>,</h1>
 							</header>
-							<p>And this is our project, <strong>The Analysis of Tweets Supporting Ivermectin as a Cure for COVID-19</strong>, which aims to examine the main reason behind people's belief in the cure despite it being heavily regarded as false. 
+							<p>and this is our project, <span style="background-color: #ffd586; padding-top: 5px; padding-bottom: 5px; padding-left: 10px; padding-right: 10px;"><strong>The Analysis of Tweets Supporting Ivermectin as a Cure for COVID-19</strong></span>, which aims to examine the main reason behind people's belief in the cure despite it being heavily regarded as false. 
 								We hope that our findings may contribute to the battle against mis/disinformation.</p>
-							<p><strong>Data Science Team</strong></p>
-							<ul style="list-style-type:none; margin-top:-30px;">
-							  <li>Antonio A. Aquino IV, WFW</li>
-							  <li>Paul Michael C. Dimayuga, WFX</li>
-							  <li>Angela Shannen S. Tan, WFU</li>
-							</ul>
 						</div>
 					</div>
 				</div>
 			</article>
 
 		<!-- Problem Formulation -->
-			<article id="overview" class="wrapper style2">
+			<article id="problem-formulation" class="wrapper style1" style="background-color: #f4f0eb">
 				<div class="container">
 					<header>
-						<h2>Problem Formulation</h2>
-						<p></p>
+						<h2><span style="background-color: #ffd586; padding-top: 5px; padding-bottom: 5px; padding-left: 10px; padding-right: 10px;">Problem Formulation</span></h2>
 					</header>
 					<div class="row aln-center">
 						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="icon solid featured fas fa-question"></span>
+							<section class="box style1" id="prob-box">
+								<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16" style="color: #ffd586; margin-bottom: 10px;">
+									<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+								  </svg>
 								<h3>Research Question</h3>
-								<p>What are the key themes and narratives used in sharing disinformation about Ivermectin curing Covid-19?</p>
+								<p>What are the key themes and narratives used in sharing disinformation about Ivermectin curing COVID-19?</p>
 							</section>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="icon solid featured far fa-lightbulb"></span>
+							<section class="box style1" id="prob-box">
+								<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill="currentColor" class="bi bi-lightbulb-fill" viewBox="0 0 16 16" style="color: #ffd586; margin-bottom: 10px;">
+									<path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5z"/>
+								  </svg>
 								<h3>Hypothesis</h3>
 								<p>A large percentage of tweets about the benefits of Ivermectin in curing COVID-19 were only based on anecdotal evidence.</p>
 							</section>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="icon featured fas fa-dot-circle"></span>
+							<section class="box style1" id="prob-box">
+								<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" fill="currentColor" class="bi bi-0-circle-fill" viewBox="0 0 16 16" style="color: #ffd586; margin-bottom: 10px;">
+									<path d="M8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895Z"/>
+									<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0Zm-8.012 4.158c1.858 0 2.96-1.582 2.96-3.99V7.84c0-2.426-1.079-3.996-2.936-3.996-1.864 0-2.965 1.588-2.965 3.996v.328c0 2.42 1.09 3.99 2.941 3.99Z"/>
+								  </svg>
 								<h3>Null Hypothesis</h3>
 								<p>Only an insignificant number of tweets about the benefits of Ivermectin in curing COVID-19 are based on anecdotal evidence.</p>
 							</section>
@@ -81,7 +94,7 @@
 					</div>
 					<div class="row aln-center" style="margin-top: 6px">
 						<div class="col-12 col-6-medium col-12-small">
-							<section class="box style1">
+							<section class="box style1" id="prob-box">
 								<h3>Action Plan</h3>
 								<p>Analyze the key words that were used in mis/disinformative tweets about Ivermectin curing COVID-19.</p>
 							</section>
