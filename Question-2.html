@@ -4,15 +4,12 @@
         <title>PH Twitter Fake News Analysis</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
         <link rel="stylesheet" href="assets/css/main.css" />
-        <style>
-            pre code {
-                background-color: #eee;
-                border: 1px solid #999;
-                display: block;
-                padding: 20px;
-                font-family: Consolas;
-            }
+        <link rel="stylesheet" href="assets/css/question.css" />
         </style>
     </head>
     <body class="is-preload">
@@ -20,50 +17,57 @@
         <!-- Nav -->
             <nav id="nav">
                 <ul class="container">
-                    <li><a href="index.html">Back</a></li>
-                    <li><a href="#top">Top</a></li>
-                    <li><a href="#problem-formulation">Problem Formulation</a></li>
-                    <li><a href="#data">Data</a></li>
-                    <li><a href="#methods">Methods</a></li>
-                    <li><a href="#results">Results</a></li>
-                    <li><a href="#team">Team</a></li>
+                    <li><a href="index.html#data-exploration">Back</a></li>
                 </ul>
             </nav>
     
         <!-- Home -->
-            <article id="top" class="wrapper style1">
+            <article>
                 <div class="container">
                     <div class="row">
-                        <!-- <div class="col-8 col-7-large col-12-medium"> -->
-                            <header>
-                                <h3>Question 2: What words appear in the most viral Tweets?</h3>
-                            </header>
+                        <header>
+                            <div class="container">
+                                <h3><span class="header-highlight">Question 2:</span></h3>
+                                <h3>What words appear in the most viral Tweets?</h3>
+                            </div>
+                        </header>
+                        <div class="container">
                             <p>Before we analyzed what words appeared in the most viral Tweets, we first sorted the data frame by most viral Tweets using the following code:</p>
-                            <pre>
-                                <code>
-likes_df = df.sort_values('Likes', ascending=False)
-likes_df.head(20)
-                                </code>
-                            </pre>
+                            
+                            <div class="container">
+                                <pre>
+                                    <code>likes_df = df.sort_values('Likes', ascending=False)
+                                        likes_df.head(20)
+                                    </code>
+                                </pre>
+                            </div>
+ 
                             <p>We then analyzed the most common words across all the Tweets. We used the words from the stemmatized text using the following code:</p>
-                            <pre>
-                                <code>
-common_words = pd.Series([item for sublist in df['Stemmed'] for item in sublist]).value_counts()
-common_words.head(20)
-                                </code>
-                            </pre>
+                            
+                            <div class="container">
+                                <pre>
+                                    <code>common_words = pd.Series([item for sublist in df['Stemmed'] for item in sublist]).value_counts()
+                                        common_words.head(20)
+                                    </code>
+                                </pre>
+                            </div>
+
                             <p>The results of the code are pictured below. As you can see, "ivermectin" was the most common word followed by "covid", and "effect".</p>
-                            <img src="images/q2-2.png" style="width: 200px;">
-                            <p>Then, we finally analyzed the most common words among the top 20 most viral Tweets in our data frame using the followign code:</p>
-                            <pre>
-                                <code>
-common_words = pd.Series([item for sublist in likes_df['Stemmed'].head(20) for item in sublist]).value_counts()
-common_words.head(20)
-                                </code>
-                            </pre>
+                            <img src="images/q2-2.png" style="width: 150px; margin-left: 30px; margin-bottom: 40px;">
+                            <p>Then, we finally analyzed the most common words among the top 20 most viral Tweets in our data frame using the following code:</p>
+                            
+                            <div class="container">
+                                <pre>
+                                    <code>common_words = pd.Series([item for sublist in likes_df['Stemmed'].head(20) for item in sublist]).value_counts()
+                                        common_words.head(20)
+                                    </code>
+                                </pre>
+                            </div>
+
                             <p>Below, you can see the results that we got. As you can see, "ivermectin" was still the most common word, followed by "covid". However, "philippin" this time is the 3rd most common word among the top 20 most viral Tweets instead of "effect".</p>
-                            <img src="images/q2-3.png" style="width: 200px;">
-                        <!-- </div> -->
+                            <img src="images/q2-3.png" style="width: 150px; margin-left: 30px;">
+
+                        </div>
                     </div>
                 </div>
             </article>

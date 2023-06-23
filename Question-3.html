@@ -4,15 +4,12 @@
         <title>PH Twitter Fake News Analysis</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
         <link rel="stylesheet" href="assets/css/main.css" />
-        <style>
-            pre code {
-                background-color: #eee;
-                border: 1px solid #999;
-                display: block;
-                padding: 20px;
-                font-family: Consolas;
-            }
+        <link rel="stylesheet" href="assets/css/question.css" />
         </style>
     </head>
     <body class="is-preload">
@@ -20,58 +17,58 @@
         <!-- Nav -->
             <nav id="nav">
                 <ul class="container">
-                    <li><a href="index.html">Back</a></li>
-                    <li><a href="#top">Top</a></li>
-                    <li><a href="#problem-formulation">Problem Formulation</a></li>
-                    <li><a href="#data">Data</a></li>
-                    <li><a href="#methods">Methods</a></li>
-                    <li><a href="#results">Results</a></li>
-                    <li><a href="#team">Team</a></li>
+                    <li><a href="index.html#data-exploration">Back</a></li>
                 </ul>
             </nav>
     
         <!-- Home -->
-            <article id="top" class="wrapper style1">
+            <article>
                 <div class="container">
                     <div class="row">
-                        <!-- <div class="col-8 col-7-large col-12-medium"> -->
-                            <header>
-                                <h3>Question 4: From whom did most of the anecdotal or factual Tweets come from?
-                                </h3>
-                            </header>
-                            <p>We first parsed the month and year of when the tweets were posted and converted the numerical month into its month name plus the year and stored it in one column</p>
-                            <pre>
-                                <code>
-import calendar
-df['Month Posted'] = df['Date posted'].str[3:5]
-df['Year Posted'] = '20' + df['Date posted'].str[6:8]
-df = df.astype({'Month Posted':'int'})
-df = df.astype({'Year Posted':'int'})
-df['Month Posted'] = df['Month Posted'].apply(lambda x: calendar.month_name[x])
-df['Month-Year Posted'] = df['Month Posted'].astype(str) + ' ' + df['Year Posted'].astype(str)
-                                </code>
-                            </pre>
-                            <p>Then using the newly formed column, we counted the frequency of tweets for each month-year and sorted them in chronological order while filling in 0 values for month-years that do not have tweets posted on them.</p>
-                        <!-- </div> -->
-                        <pre>
-                            <code>
-df_grouped = df.groupby('Month-Year Posted').size().reset_index(name='count')
-idx = pd.date_range(min(pd.to_datetime(df['Month-Year Posted'], format='%B %Y')), 
-max(pd.to_datetime(df['Month-Year Posted'], format='%B %Y')), freq='MS')
-df_all = pd.DataFrame({'Month-Year Posted': idx.strftime('%B %Y'), 'count': 0})
-
-df_merged = df_all.merge(df_grouped, on='Month-Year Posted', how='left')
-df_merged['count'] = df_merged['count_y'].fillna(0)
-
-# Create a bar graph
-fx = df_merged.plot(kind='bar', x='Month-Year Posted', y='count', title='Number of Tweets Posted according to Month-Year')
-fx.set_xlabel("Month-Year Posted")
-fx.set_ylabel("Tweet Count")
-                            </code>
-                        </pre>
-                        <p>The results are shown on the succeeding bar and line plots where x-axis represents the Month-Years and the y-axis represents the number of tweets posted.</p>
-                        <img src="images/q3-1.png">
-                        <img src="images/q3-2.png">
+                        <header>
+                            <div class="container">
+                                <h3><span class="header-highlight">Question 3:</span></h3>
+                                <h3>From whom did most of the anecdotal or factual Tweets come from?</h3>
+                            </div>
+                        </header>
+                        <div class="container">
+                            <p>We first parsed the month and year of when the Tweets were posted and converted the numerical month into its month name plus the year and stored it in one column.</p>
+                            <div class="container">
+                                <pre>
+                                    <code>import calendar
+                                        df['Month Posted'] = df['Date posted'].str[3:5]
+                                        df['Year Posted'] = '20' + df['Date posted'].str[6:8]
+                                        df = df.astype({'Month Posted':'int'})
+                                        df = df.astype({'Year Posted':'int'})
+                                        df['Month Posted'] = df['Month Posted'].apply(lambda x: calendar.month_name[x])
+                                        df['Month-Year Posted'] = df['Month Posted'].astype(str) + ' ' + df['Year Posted'].astype(str)
+                                    </code>
+                                </pre>
+                            </div>
+                            <p>Then, using the newly formed column, we counted the frequency of tweets for each month-year and sorted them in chronological order while filling in 0 values for month-years that do not have Tweets posted on them.</p>
+                            <div class="container">
+                                <pre>
+                                    <code>df_grouped = df.groupby('Month-Year Posted').size().reset_index(name='count')
+                                        idx = pd.date_range(min(pd.to_datetime(df['Month-Year Posted'], format='%B %Y')), 
+                                        max(pd.to_datetime(df['Month-Year Posted'], format='%B %Y')), freq='MS')
+                                        df_all = pd.DataFrame({'Month-Year Posted': idx.strftime('%B %Y'), 'count': 0})
+    
+                                        df_merged = df_all.merge(df_grouped, on='Month-Year Posted', how='left')
+                                        df_merged['count'] = df_merged['count_y'].fillna(0)
+    
+                                        # Create a bar graph
+                                        fx = df_merged.plot(kind='bar', x='Month-Year Posted', y='count', title='Number of Tweets Posted according to Month-Year')
+                                        fx.set_xlabel("Month-Year Posted")
+                                        fx.set_ylabel("Tweet Count")
+                                    </code>
+                                </pre>
+                            </div>
+                            <p>The results are shown on the succeeding bar and line plots where x-axis represents the month-years and the y-axis represents the number of tweets posted.</p>
+                            <div class="row" style="margin-bottom: 50px;">
+                                <img src="images/q3-1.png" style="height: 100%">
+                                <img src="images/q3-2.png" style="height: 100%">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </article>
