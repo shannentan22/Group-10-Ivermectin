@@ -4,77 +4,60 @@
         <title>PH Twitter Fake News Analysis</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
         <link rel="stylesheet" href="assets/css/main.css" />
-        <style>
-            pre code {
-                background-color: #eee;
-                border: 1px solid #999;
-                display: block;
-                padding: 20px;
-                font-family: Consolas;
-            }
-        </style>
+        <link rel="stylesheet" href="assets/css/question.css" />
     </head>
     <body class="is-preload">
     
         <!-- Nav -->
             <nav id="nav">
                 <ul class="container">
-                    <li><a href="index.html">Back</a></li>
-                    <li><a href="#top">Top</a></li>
-                    <li><a href="#problem-formulation">Problem Formulation</a></li>
-                    <li><a href="#data">Data</a></li>
-                    <li><a href="#methods">Methods</a></li>
-                    <li><a href="#results">Results</a></li>
-                    <li><a href="#team">Team</a></li>
+                    <li><a href="index.html#data-exploration">Back</a></li>
                 </ul>
             </nav>
     
         <!-- Home -->
-            <article id="top" class="wrapper style1">
+            <article>
                 <div class="container">
                     <div class="row">
                             <header>
-                                <h3>Question 1: Are there significantly more anecdotal than factual Tweets?</h3>
+                                <div class="container">
+                                    <h3><span class="header-highlight">Question 1:</span></h3>
+                                    <h3>Are there significantly more anecdotal than factual Tweets?</h3>
+                                </div>
                             </header>
+                            <div class="container">
+                                <p>Based on our project proposal, our hypotheses are:</p>
+                                <ul>
+                                    <li><span class="text-highlight">Null Hypothesis:</span> Only an insignificant number of tweets about the benefits of Ivermectin in curing COVID-19 are based on anecdotal evidence.</li>
+                                    <li><span class="text-highlight">Alternative Hypothesis:</span>  Hypothesis: A large percentage of tweets about the benefits of Ivermectin in curing COVID-19 were only based on anecdotal evidence.</li>
+                                </ul>
+                                <p>To solve for this, we had to use a Binomial Test to determine if the proportion of a binary variable is equal to a a previously claimed value which is that an insignificant number of anecdotal Tweets make up the Tweets collected. So we assume that the estimate chance of success is 50% which means that a Tweet is either anecdotal or factual. For this we will let the significance level of alpha = 0.05, while we use the formula for a Binomial Test: </p>
+                                <img src="images/q1-binomial.png" style="margin-left: 30px;">
+                                <p>
+                                    where <math>k</math> is the count of anecdotal Tweets while <math>n</math> is the total amount of tweets.
+                                </p>
+                                <p style="margin-bottom: 0px;"><span class="text-highlight">Binomial Test Code</span> (in Python):</p>
+                                <div class="container">
+                                    <pre>
+                                        <code class="python">from scipy.stats import binom_test
 
+                                            anecdotal_number = df["Theme"].value_counts()[0]
+                                            not_anecdotal_number = df["Theme"].value_counts()[1] + df["Theme"].value_counts()[2]
+                                            totalnum = anecdotal_number + not_anecdotal_number
 
-
-                            <p>
-                                Based on our Project Proposal, these will be our Null and Alternative Hypothesis,
-                                Null Hypothesis: Only an insignificant number of tweets about the benefits of Ivermectin in curing COVID-19 are based on anecdotal evidence.
-                                Alt  Hypothesis: A large percentage of tweets about the benefits of Ivermectin in curing COVID-19 were only based on anecdotal evidence.
-
-                                To solve for this we had to use a Binomial Test to determine if the proportion of a binary variable is equal to a a previously claimed value which is that an insignificant number of anecdotal tweets make up the tweets collected. So we assume that the estimate chance of success is 50% which means that a tweet is either Anecdotal or Factual For this we will let the significance level of alpha = 0.05, while we use the formula for a binomial test
-                            </p>
-
-                            <img src = "images/q1-binomial.png" >
-                            <p>
-                                where k is the count of anecdotal tweets while n is the total amount of tweets.
-                            </p>
-                            <pre>
-                                <code>
-from scipy.stats import binom_test
-
-anecdotal_number = df["Theme"].value_counts()[0]
-not_anecdotal_number = df["Theme"].value_counts()[1] + df["Theme"].value_counts()[2]
-totalnum = anecdotal_number + not_anecdotal_number
-
-p_value = binom_test(anecdotal_number,totalnum, 0.5)
-
-p_value
-                                </code>
-                            </pre>
-                            <p>
-                                In the code block above, after doing caterorical encoding to convert the "Anecdotal" to 0 while the "Factual" and "None" are converted to 1 and 2 respectively,
-
-                                After running the code, we ge a p-value of <strong>0.001331825114199613</strong>
-                            </p>
-
-                            <p>
-                                  Since we used an alpha value of 0.05 while our p-value is 0.001331825114199613, <strong>We reject the Null Hypothesis and we can conclude that a large percentage of tweets about the benefits of Ivermectin in curing COVID-19 were only based on anecdotal evidence. </strong>
-                            </p>
-
+                                            p_value = binom_test(anecdotal_number,totalnum, 0.5)
+                                            p_value
+                                        </code>
+                                    </pre>     
+                                </div>
+                                <p>In the code block above, we performed categorical encoding on the "Theme" attribute to convert "Anecdotal" to 0 while the "Factual" and "None" are converted to 1 and 2 respectively.</p>
+                                <p>After running the code, we get a p-value of <strong>0.001331825114199613</strong>. Since we used an alpha value of 0.05 which is greater than our p-value, <strong>we reject the alternative hypothesis</strong> and conclude that the percentage of Tweets about the benefits of Ivermectin in curing COVID-19 were not largely based on anecdotal evidence. </strong></p>
+                            </div>
                     </div>
                 </div>
             </article>
