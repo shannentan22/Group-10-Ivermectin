@@ -21,6 +21,18 @@
 				padding-left: 10px; 
 				padding-right: 10px;
 			}
+			.question-box {
+				text-decoration: none;
+				font-size: 18px;
+			}
+			.question-box article {
+				background-color: white;
+			}
+			.question-box article:hover {
+				background-color: #ffd586;
+				transition: all .4s ease;
+				-webkit-transition: all .4s ease;
+			}
 			#top {
 				background-color: white;
 			}
@@ -148,7 +160,7 @@
 						<h2><span class="header-highlight">Data Collection</span></h2>
 					</header>
 					<div>
-						<p style="font-size: 26px;">We manually scraped Twitter for disinformative Tweets supporting Ivermectin as a cure for COVID-19.</p> 
+						<p style="font-size: 26px;">We scraped Twitter for disinformative Tweets supporting Ivermectin as a cure for COVID-19 and manually translated each Tweet to English.</p> 
 						<button id="data-button">
 							<a href="https://docs.google.com/spreadsheets/d/1am39IChqyeSUEEQf3InZKEVDc8ZsORprvlE7t2-iUMs/edit?usp=sharing" id="data-link">Look at our data!</a>
 						</button>
@@ -156,58 +168,63 @@
 				</div>
 			</article>
 		<!-- Data Exploration -->
-			<article id="data-exploration" class="wrapper style3">
+			<article id="data-exploration" class="wrapper style1" style="background-color: #f4f0eb">
 				<div class="container">
 					<header>
-						<h2>Data Exploration</h2>
+						<h2><span class="header-highlight">Data Exploration</span></h2>
 						<script src="https://gist.github.com/shannentan22/91a945cbd99f21bc3f326eede239aa94.js"></script>
 					</header>
 					<div class="row">
 						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="Question-1.html" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-								<h3><a href="Question-1.html">Question 1</a></h3>
-								<p>Are there significantly more anecdotal than factual Tweets?</p>
-							</article>
+							<a href="Question-1.html" class="question-box">
+								<article class="box style2">
+									<h3>Question 1</h3>
+									<p>Are there significantly more anecdotal than factual Tweets?</p>
+								</article>
+							</a>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="Question-2.html" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-								<h3><a href="Question-2.html">Question 2</a></h3>
-								<p>What words appear in the most viral Tweets?</p>
-							</article>
+							<a href="Question-2.html" class="question-box">
+								<article class="box style2">
+									<h3>Question 2</h3>
+									<p>What words appear in the most viral Tweets?</p>
+								</article>
+							</a>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="Question-3.html" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-								<h3><a href="Question-3.html">Question 3</a></h3>
-								<p>When did the fake news Tweets occur more frequently?</p>
-							</article>
+							<a href="Question-3.html" class="question-box">
+								<article class="box style2">
+									<h3>Question 3</h3>
+									<p>When did the fake news Tweets occur more frequently?</p>
+								</article>
+							</a>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="Question-4.html" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
-								<h3><a href="Question-4.html">Question 4</a></h3>
-								<p>From whom did most of the anecdotal or factual Tweets come from?</p>
-							</article>
+							<a href="Question-4.html" class="question-box">
+								<article class="box style2">
+									<h3>Question 4</h3>
+									<p>From whom did most of the anecdotal or factual Tweets come from?</p>
+								</article>
+							</a>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="Question-5.html" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-								<h3><a href="Question-5.html">Question 5</a></h3>
-								<p>How does engagement differ between different themes and account types?</p>
-							</article>
+							<a href="Question-5.html" class="question-box">
+								<article class="box style2">
+									<h3>Question 5</h3>
+									<p>How does engagement differ between different themes and account types?</p>
+								</article>
+							</a>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="Question-6.html" class="image featured"><img src="images/pic06.jpg" alt="" /></a>
-								<h3><a href="Question-6.html">Question 6</a></h3>
-								<p>Is there a relationship between the length of the Tweet and the number of likes?</p>
-							</article>
+							<a href="Question-6.html" class="question-box">
+								<article class="box style2">
+									<h3>Question 6</h3>
+									<p>Is there a relationship between the Tweet length and the number of likes?</p>
+								</article>
+							</a>
 						</div>
 					</div>
 					<footer>
-						<p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
 					</footer>
 				</div>
 			</article>
