@@ -43,6 +43,10 @@
 				border-radius: 50%;
 				width: 200px;
 			}
+			.comm {
+				text-align: left;
+				padding-bottom: 50px;
+			}
 			
 			#top {
 				background-color: white;
@@ -265,27 +269,70 @@
 				<div class="container">
 					<header>
 						<h2><span class="header-highlight">Data Communication</span></h2>
-						<p>Proin odio consequat  sapien vestibulum consequat lorem dolore feugiat.</p>
 					</header>
 					<div class="row">
-						<div class="col-6 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-								<h3><a href="#">Results</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
-						<div class="col-6 col-6-medium col-12-small">
-							<article class="box style2">
-								<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-								<h3><a href="#">Results</a></h3>
-								<p>Ornare nulla proin odio consequat.</p>
-							</article>
-						</div>
+						<article class="box style2 comm">
+							<h3><span class="text-highlight">Introduction</span></h3>
+							<p>Our research aims to analyze the waves of disinformation regarding ivermectin curing COVID-19. As we all recall during the lockdown, Ivermectin found itself in the middle of controversy with a large number of people claiming that it indeed cures COVID-19. We hope that with our research, we can help understand how many of these people rationalize their thinking. Do they base their health claims on anecdotal evidence or from factual sources?</p>
+						</article>
+					</div>
+					<div class="row">
+						<article class="box style2 comm">
+							<h3><span class="text-highlight">Materials and Methods</span></h3>
+							<p>For our research, we manually collected 100 Tweets by searching and exploring keywords regarding the benefits of ivermectin. These Tweets advocate for Ivermectin through 3 ways: anecdotal which is just pure “he-say, she-say”, factual where they try to base if on pseudo-factual sources, and lastly none which is neither the two previous categories. We then translated all of the Tagalog Tweets to English, cleaned, and preprocessed the data to make sure that the Natural Language Preprocessing helps our Sentiment Analysis be more accurate. The next part of our research then analyzes the Tweets by using a Chi-squared test to check how large a part in our collected tweets are made up of anecdotal, factual or none Tweets respectively. We also used the Naive Bayes Classifier to create a model that predicts the theme of an ivermectin-related Tweet.</p>
+						</article>
+					</div>
+					<div class="row">
+						<article class="box style2 comm">
+							<h3><span class="text-highlight">Results and Discussion</span></h3>
+							<h4>Our findings and key takeaways</h4>
+							<p>The key takeaway for our research is that Tweets about misinformation on ivermectin are not majorly composed of anecdotal evidence. In fact, the amount of Tweets with anecdotal evidence is significantly less compared to the amount of tweets with non-anecdotal evidence (factual and none category). Other findings we have are the dates when the Tweets are posted more frequently, which also coincides with the months of imposing strict community quarantine and lawmakers like Marcoleta endorsing ivermectin as cure to COVID. Another finding is from which account type does the different category of Tweets come from and the amount of likes for each group of Tweets where anonymous accounts Tweet the most with both anecdotal and factual evidence, and the anonymous account with anecdotal evidence Tweets have the most likes.</p>
+							<h4>Why care about our findings?</h4>
+							<p>We should care about the findings as it gives us a new perspective on the minds of the Filipino audience regarding misinformation. Firstly, they highlight the deceptive nature of misinformation, emphasizing the need for critical evaluation and fact-checking even when seemingly credible evidence is presented. Secondly, the temporal patterns of tweet posting during periods of strict community quarantine and endorsements by influential figures provide insights into the dynamics of misinformation dissemination, aiding in targeted interventions. Lastly, understanding the role of anonymous accounts in spreading and gaining support for misinformation enables the development of strategies to mitigate their influence. These findings emphasize the importance of critical evaluation, fact-checking, and media literacy in effectively combating misinformation.</p>
+							<h4>How do our findings fit into what we already know?</h4>
+							<p>The findings presented in this conversation regarding Tweets about ivermectin misinformation align with our existing knowledge by highlighting the predominance of non-anecdotal evidence, the influence of temporal patterns and endorsements by influential figures, and the significant role of anonymous accounts in spreading misinformation. These insights further support our understanding of misinformation dynamics, emphasizing the importance of critical evaluation, fact-checking, and media literacy to address the dissemination of false information effectively.</p>
+						</article>
+					</div>
+					<div class="row">
+						<article class="box style2 comm">
+							<h3><span class="text-highlight">Implications</span></h3>
+							<h4>Potential impacts of our research</h4>
+							<p>The potential impacts of our research on Filipinos' beliefs in ivermectin as a cure for COVID-19 are:</p>
+							<ul>
+								<li>Improved public understanding of the factors (anecdotal/factual-based reasoning) influencing these beliefs</li>
+								<li>Better strategies to address misinformation and promote evidence-based information</li>
+								<li>Contribution to scientific knowledge on public beliefs and attitudes towards COVID-19 treatments</li>
+								<li>Ability to classify if Tweets related to ivermectin as a cure for COVID-19 use anecdotal or factual-based reasonings</li>
+							</ul>
+							<p>By providing valuable insights into the reasons behind Filipinos' beliefs in ivermectin as a COVID-19 cure, the research contributes to efforts aimed at countering misinformation and promoting evidence-based decision-making.</p>
+							<h4>Practical applications of our research</h4>
+							<ul>
+								<li>Informed policy development for effective public health communication
+									<ul>
+										<li style="margin-bottom: -30px;">Policy-makers and health authorities can be guided in the creation of targeted educational campaigns and interventions to promote evidence-based information and discourage the spread of misinformation.</li>
+									</ul>
+								</li>
+								<li>Enhanced health communication strategies tailored to specific concerns
+									<ul>
+										<li>Media writers can use information from our research to tailor their content in such a way that allows them to communicate to the Filipino public more effectively.</li>
+									</ul>
+								</li>
+								<li style="margin-top: -30px;">Classifying future ivermectin-related Tweets that may be of use to future researchers or fact-checkers</li>
+							</ul>
+						</article>
+					</div>
+					<div class="row">
+						<article class="box style2 comm">
+							<h3><span class="text-highlight">Conclusion</span></h3>
+							<h4>Bottom line</h4>
+							<p>Our research found that many Filipinos who believe in ivermectin as a cure for COVID-19 use non-anecdotal evidence as their reasonings. Because of this, we accepted our null hypothesis:</p>
+							<p style="margin-left: 30px;"><i>Not a large percentage of Tweets about the benefits of Ivermectin in curing COVID-19 were only based on anecdotal evidence.</i></p>
+							<p>We have also developed a Naive Bayes classifier that can help in classifying ivermectin-related Tweets to see if they are based on anecdotal or factual evidence. This may help future researchers or fact-checkers in their analyses.</p>
+							<h4>What can/should we do with this information?</h4>
+							<p>Based on the information we obtained from the research, several actions can be taken. We can educate and raise awareness about ivermectin and COVID-19 mis/disinformation through targeted campaigns. We can also adapt health communication strategies to counter misinformation. Evidence-based policies on COVID-19 treatments can also be developed. Lastly, further research on public beliefs and attitudes can greatly enhance our understanding of people's reasoning.</p>
+						</article>
 					</div>
 					<footer>
-						<p>Want to learn more? Take a look at our source codes.</p>
-						<a href="#contact" class="button large scrolly">Github Repo</a>
 					</footer>
 				</div>
 			</article>
